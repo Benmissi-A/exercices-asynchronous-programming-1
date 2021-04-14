@@ -20,7 +20,6 @@ const addFile = async (src , dest) => {
     throw e
   }
 }
-
 const fastCopy = async (path ,newPath) => {
   try{
     //todo verifier l'existence du nouveau dossier
@@ -28,12 +27,11 @@ const fastCopy = async (path ,newPath) => {
       await fsPromises.mkdir(newPath)
     }
     const dirFiles= await fsPromises.readdir(path)
-    console.log(dirFiles)
     for(let i=0 ; i<dirFiles.length ; ++i){
       addFile(path+'/'+dirFiles[i],newPath+'/'+dirFiles[i])
     }  
   }catch(e){
-    console.log(e.message)
+    console.error(e.message)
   }
 }
 
