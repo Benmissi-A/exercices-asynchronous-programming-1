@@ -27,8 +27,9 @@ const fastCopy = async (path ,newPath) => {
       await fsPromises.mkdir(newPath)
     }
     const dirFiles= await fsPromises.readdir(path)
+    const promisesList = []
     for(let i=0 ; i<dirFiles.length ; ++i){
-      addFile(path+'/'+dirFiles[i],newPath+'/'+dirFiles[i])
+      promisesList.push(addFile(path+'/'+dirFiles[i],newPath+'/'+dirFiles[i]))
     }  
   }catch(e){
     console.error(e.message)
